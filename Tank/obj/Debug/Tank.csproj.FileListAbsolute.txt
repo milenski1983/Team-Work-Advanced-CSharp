@@ -1,0 +1,6 @@
+C:\Users\Milen\Documents\Visual Studio 2013\Projects\HomeWorks_SoftUni\TeamWork\Tank\bin\Debug\Tank.exe.config
+C:\Users\Milen\Documents\Visual Studio 2013\Projects\HomeWorks_SoftUni\TeamWork\Tank\bin\Debug\Tank.exe
+C:\Users\Milen\Documents\Visual Studio 2013\Projects\HomeWorks_SoftUni\TeamWork\Tank\bin\Debug\Tank.pdb
+C:\Users\Milen\Documents\Visual Studio 2013\Projects\HomeWorks_SoftUni\TeamWork\Tank\obj\Debug\Tank.csprojResolveAssemblyReference.cache
+C:\Users\Milen\Documents\Visual Studio 2013\Projects\HomeWorks_SoftUni\TeamWork\Tank\obj\Debug\Tank.exe
+C:\Users\Milen\Documents\Visual Studio 2013\Projects\HomeWorks_SoftUni\TeamWork\Tank\obj\Debug\Tank.pdb
