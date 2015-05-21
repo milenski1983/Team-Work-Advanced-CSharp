@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Diagnostics;
 
 namespace Tank
 {
@@ -31,6 +32,11 @@ namespace Tank
             int numberOfBugs = bugsGen.Next(15, 20);
             uint score = 0;
             bool gameOver = false;
+            DateTime now = new DateTime();
+            Stopwatch sw = new Stopwatch();
+            TimeSpan timeElapsed = new TimeSpan();
+            int sleepTime = 200;
+            List<Mine> mines = new List<Mine>();
 
             //bugs generator
             for (int i = 0; i < numberOfBugs; i++)
@@ -42,8 +48,15 @@ namespace Tank
                 bugs.Add(new Bug(x, y, direction, bugsBody));   
             }
 
+            for (int i = 0; i < 10; i++)
+            {
+                mines.Add(new Mine(bugsGen.Next(1,Console.BufferWidth - 1), bugsGen.Next(1,Console.BufferHeight - 1)));
+            }
+
             while (true)
             {
+                //sw.Start();
+                now = DateTime.Now;
                 Console.Clear();
                 foreach (Bug bug in bugs)
                 {
@@ -82,6 +95,11 @@ namespace Tank
                         bullets.Add(tank.OpenFire(tank.Direction));
                     }
 
+                    if (key.Key == ConsoleKey.Escape)
+                    {
+                        return;
+                    }
+
                     while (Console.KeyAvailable)
                     {
                         Console.ReadKey(false);
@@ -117,6 +135,7 @@ namespace Tank
                     }
                 }
 
+                DrawMines(mines);
                 DrawTank(tank);
                 DrawBullets(bullets);
                 DrawBugs(bugs);
@@ -135,7 +154,37 @@ namespace Tank
                     }
                 }
 
-                Thread.Sleep(100);
+                foreach (Mine mine in mines)
+                {
+                    if (mine.X == tank.X && mine.Y == tank.Y)
+                    {
+                        Console.Beep(1250, 500);
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Collision detected!");
+                        gameOver = true;
+                        break;
+                    }
+                }
+
+                //sw.Stop();
+                timeElapsed.Add(DateTime.Now - now);
+                if (timeElapsed.Seconds >= 5)
+                {
+                    sleepTime -= 100;
+                    timeElapsed = new TimeSpan();
+                }
+
+                try
+                {
+                    Thread.Sleep(sleepTime);
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine("Time's up!");
+                    Thread.Sleep(2000);
+                    return;
+                }
+                
 
                 if (gameOver)
                 {
@@ -158,6 +207,16 @@ namespace Tank
                 }
             }
 
+        }
+
+        private static void DrawMines(List<Mine> mines)
+        {
+            foreach (Mine mine in mines)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.SetCursorPosition(mine.X, mine.Y);
+                Console.Write(mine.Body);
+            }
         }
 
         private static void DrawScore(uint score)

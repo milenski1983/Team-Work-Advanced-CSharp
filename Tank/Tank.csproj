@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Bug.cs" />
     <Compile Include="Bullet.cs" />
+    <Compile Include="Mine.cs" />
     <Compile Include="Tank.cs" />
     <Compile Include="Tanks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
