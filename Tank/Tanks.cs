@@ -29,7 +29,7 @@ namespace Tank
             List<Bullet> bullets = new List<Bullet>();
             Tank tank = new Tank();
             Random bugsGen = new Random(); //random generator for bugs
-            int numberOfBugs = bugsGen.Next(15, 20);
+            int numberOfBugs = bugsGen.Next(15,25);
             uint score = 0;
             bool gameOver = false;
             DateTime now = new DateTime();
@@ -37,19 +37,24 @@ namespace Tank
             TimeSpan timeElapsed = new TimeSpan();
             int sleepTime = 180;
             List<Mine> mines = new List<Mine>();
+            int x = 0;
+            int y = 0;
+            string direction = null;
+            char bugsBody = '*';
 
             //bugs generator
             for (int i = 0; i < numberOfBugs; i++)
             {
-                int x = bugsGen.Next(0, Console.BufferWidth);
-                int y = bugsGen.Next(0, Console.BufferHeight - 10);
-                string direction = directions[bugsGen.Next(0, directions.Length)];
-                char bugsBody = bugsBodies[bugsGen.Next(0, bugsBodies.Length)]; //random bugs' forms
+                x = bugsGen.Next(0, Console.BufferWidth);
+                y = bugsGen.Next(0, Console.BufferHeight - 10);
+                 direction = directions[bugsGen.Next(0, directions.Length)];
+                 bugsBody = bugsBodies[bugsGen.Next(0, bugsBodies.Length)]; //random bugs' forms
                 bugs.Add(new Bug(x, y, direction, bugsBody));   
-                if (score %2==0)
-                {
-                    bugs.Add(new Bug(x, y, direction, bugsBody));
-                }
+                
+            }
+            if (score % 2 == 0)
+            {
+                bugs.Add(new Bug(x, y, direction, bugsBody));
             }
             //Mines generator
             for (int i = 0; i < 10; i++)
