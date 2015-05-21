@@ -12,10 +12,10 @@ namespace Tank
         static void Main()
         {
             Console.SetWindowSize(80, 30);
-            Console.BufferWidth = 80;
-            Console.BufferHeight = 30;
-            char[] bugsBodies = { '#', '$', '%', '^', '&', '*', '!', '?', '.', ',' };
+            Console.BufferWidth = Console.WindowWidth;
+            Console.BufferHeight = Console.WindowHeight;
 
+            //tanks positions
             Dictionary<string, char[,]> tankPositions = new Dictionary<string, char[,]>();
             tankPositions["up"] = new char[,]{{' ','|',' '}, {'@','#','@'}, {'@','#','@'}};
             tankPositions["right"] = new char[,]{{'@','@',' '}, {'#','#','-'}, {'@','@',' '}};
@@ -24,9 +24,10 @@ namespace Tank
             
             string[] directions = {"up", "down", "left", "right"};
             List<Bug> bugs = new List<Bug>();
+            char[] bugsBodies = { '#', '$', '%', '^', '&', '*', '!', '?', '.', ',' };
             List<Bullet> bullets = new List<Bullet>();
             Tank tank = new Tank();
-            Random bugsGen = new Random();
+            Random bugsGen = new Random(); //random generator for bugs
             int numberOfBugs = bugsGen.Next(15, 20);
             uint score = 0;
             bool gameOver = false;
@@ -161,7 +162,7 @@ namespace Tank
 
         private static void DrawScore(uint score)
         {
-            Console.SetCursorPosition(Console.BufferWidth - 20, Console.BufferHeight - 3);
+            Console.SetCursorPosition(Console.BufferWidth - 20, Console.BufferHeight - 1);
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Score: {0}", score);
         }

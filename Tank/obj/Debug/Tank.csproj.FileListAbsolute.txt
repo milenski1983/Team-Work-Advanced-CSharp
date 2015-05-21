@@ -10,3 +10,9 @@ C:\Users\Milen\Desktop\Нова папка\trunk\Tank\obj\Debug\Tank.pdb
 C:\Users\Milen\Desktop\Нова папка\trunk\Tank\bin\Debug\Tank.exe
 C:\Users\Milen\Desktop\Нова папка\trunk\Tank\bin\Debug\Tank.pdb
 C:\Users\Milen\Desktop\Нова папка\trunk\Tank\obj\Debug\Tank.csprojResolveAssemblyReference.cache
+C:\Users\Milen\Desktop\Tanks - github\trunk\Tank\bin\Debug\Tank.exe.config
+C:\Users\Milen\Desktop\Tanks - github\trunk\Tank\obj\Debug\Tank.exe
+C:\Users\Milen\Desktop\Tanks - github\trunk\Tank\obj\Debug\Tank.pdb
+C:\Users\Milen\Desktop\Tanks - github\trunk\Tank\bin\Debug\Tank.exe
+C:\Users\Milen\Desktop\Tanks - github\trunk\Tank\bin\Debug\Tank.pdb
+C:\Users\Milen\Desktop\Tanks - github\trunk\Tank\obj\Debug\Tank.csprojResolveAssemblyReference.cache
