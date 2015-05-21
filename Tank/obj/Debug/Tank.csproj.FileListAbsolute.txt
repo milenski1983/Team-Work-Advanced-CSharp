@@ -16,3 +16,9 @@ C:\Users\Milen\Desktop\Tanks - github\trunk\Tank\obj\Debug\Tank.pdb
 C:\Users\Milen\Desktop\Tanks - github\trunk\Tank\bin\Debug\Tank.exe
 C:\Users\Milen\Desktop\Tanks - github\trunk\Tank\bin\Debug\Tank.pdb
 C:\Users\Milen\Desktop\Tanks - github\trunk\Tank\obj\Debug\Tank.csprojResolveAssemblyReference.cache
+C:\Users\Boris\Downloads\Team-Work-Advanced-C--master\Team-Work-Advanced-C--master\Tank\bin\Debug\Tank.exe.config
+C:\Users\Boris\Downloads\Team-Work-Advanced-C--master\Team-Work-Advanced-C--master\Tank\obj\Debug\Tank.exe
+C:\Users\Boris\Downloads\Team-Work-Advanced-C--master\Team-Work-Advanced-C--master\Tank\obj\Debug\Tank.pdb
+C:\Users\Boris\Downloads\Team-Work-Advanced-C--master\Team-Work-Advanced-C--master\Tank\bin\Debug\Tank.exe
+C:\Users\Boris\Downloads\Team-Work-Advanced-C--master\Team-Work-Advanced-C--master\Tank\bin\Debug\Tank.pdb
+C:\Users\Boris\Downloads\Team-Work-Advanced-C--master\Team-Work-Advanced-C--master\Tank\obj\Debug\Tank.csprojResolveAssemblyReference.cache

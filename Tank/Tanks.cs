@@ -35,7 +35,7 @@ namespace Tank
             DateTime now = new DateTime();
             Stopwatch sw = new Stopwatch();
             TimeSpan timeElapsed = new TimeSpan();
-            int sleepTime = 200;
+            int sleepTime = 180;
             List<Mine> mines = new List<Mine>();
 
             //bugs generator
@@ -46,8 +46,12 @@ namespace Tank
                 string direction = directions[bugsGen.Next(0, directions.Length)];
                 char bugsBody = bugsBodies[bugsGen.Next(0, bugsBodies.Length)]; //random bugs' forms
                 bugs.Add(new Bug(x, y, direction, bugsBody));   
+                if (score %2==0)
+                {
+                    bugs.Add(new Bug(x, y, direction, bugsBody));
+                }
             }
-
+            //Mines generator
             for (int i = 0; i < 10; i++)
             {
                 mines.Add(new Mine(bugsGen.Next(1,Console.BufferWidth - 1), bugsGen.Next(1,Console.BufferHeight - 1)));
@@ -134,21 +138,20 @@ namespace Tank
                         }
                     }
                 }
-
                 DrawMines(mines);
                 DrawTank(tank);
-                DrawBullets(bullets);
                 DrawBugs(bugs);
+                DrawBullets(bullets);
                 DrawScore(score);
 
                 //collisions
                 foreach (Bug bug in bugs)
                 {
-                    if ((bug.X == tank.X) && (bug.Y == tank.Y))
+                    if ((bug.X - 1) <= tank.X && tank.X <= (bug.X + 1) && (bug.Y - 1 <= tank.Y && tank.Y <= bug.Y + 1))
                     {
                         Console.Beep(1250, 500);
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Collision detected!");
+                        Console.Write("  Collision detected!    ");
                         gameOver = true;
                         break;
                     }
@@ -156,22 +159,25 @@ namespace Tank
 
                 foreach (Mine mine in mines)
                 {
-                    if (mine.X == tank.X && mine.Y == tank.Y)
+                    if ((mine.X - 1) <= tank.X && tank.X <= (mine.X + 1) && (mine.Y - 1 <= tank.Y && tank.Y <= mine.Y + 1))    
                     {
                         Console.Beep(1250, 500);
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Collision detected!");
+                        Console.Write("  Collision detected!    ");
                         gameOver = true;
                         break;
                     }
                 }
 
                 //sw.Stop();
-                timeElapsed.Add(DateTime.Now - now);
-                if (timeElapsed.Seconds >= 5)
+             //   timeElapsed.Add(DateTime.Now - now);
+                if (score>7)
                 {
-                    sleepTime -= 100;
-                    timeElapsed = new TimeSpan();
+                    sleepTime = 140;
+                }
+                if (score>13)
+                {
+                    sleepTime = 100;
                 }
 
                 try
@@ -180,7 +186,7 @@ namespace Tank
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    Console.WriteLine("Time's up!");
+                    Console.Write("Time's up!");
                     Thread.Sleep(2000);
                     return;
                 }
@@ -188,7 +194,7 @@ namespace Tank
 
                 if (gameOver)
                 {
-                    Console.WriteLine("Game over! Press 1) to try again or Escape to exit.");
+                    Console.Write("Game over! Press 1) to try again or Escape to exit.");
                 Loop:
                     ConsoleKeyInfo choice = Console.ReadKey(true);
                     
