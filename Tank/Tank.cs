@@ -55,7 +55,7 @@ namespace Tank
             switch (direction)
             {
                 case "left":
-                    if (this.x >= 3)
+                    if (this.x >= 2)
                     {
                         return this.x--;
                     }
@@ -85,7 +85,7 @@ namespace Tank
                     }
                     break;
                 default:
-                    if (this.y <= Console.BufferHeight - 3)
+                    if (this.y <= Console.BufferHeight - 4)
                     {
                         return this.y++;
                     }

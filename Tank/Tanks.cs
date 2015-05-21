@@ -9,7 +9,7 @@ namespace Tank
 {
     class Tanks
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.SetWindowSize(80, 30);
             Console.BufferWidth = 80;
@@ -29,6 +29,7 @@ namespace Tank
             Random bugsGen = new Random();
             int numberOfBugs = bugsGen.Next(15, 20);
             uint score = 0;
+            bool gameOver = false;
 
             //bugs generator
             for (int i = 0; i < numberOfBugs; i++)
@@ -50,10 +51,9 @@ namespace Tank
                 }
 
                 tank.Move(tank.Direction);
-                
+
                 if (Console.KeyAvailable)
                 {
-                    //user input
                     ConsoleKeyInfo key = Console.ReadKey();
 
                     //tank direction
@@ -80,6 +80,11 @@ namespace Tank
                     {
                         bullets.Add(tank.OpenFire(tank.Direction));
                     }
+
+                    while (Console.KeyAvailable)
+                    {
+                        Console.ReadKey(false);
+                    }
                 }
 
                 //move existing bullets
@@ -105,6 +110,7 @@ namespace Tank
                         if (bullet.X == bugs[i].X && bullet.Y == bugs[i].Y)
                         {
                             bugs.RemoveAt(i);
+                            Console.Beep();
                             score++;
                         }
                     }
@@ -120,15 +126,35 @@ namespace Tank
                 {
                     if ((bug.X == tank.X) && (bug.Y == tank.Y))
                     {
+                        Console.Beep(1250, 500);
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.SetCursorPosition(1, Console.BufferHeight - 1);
                         Console.WriteLine("Collision detected!");
-                        Console.ReadLine();
-                        return;
+                        gameOver = true;
+                        break;
                     }
                 }
 
-                Thread.Sleep(200);
+                Thread.Sleep(100);
+
+                if (gameOver)
+                {
+                    Console.WriteLine("Game over! Press 1) to try again or Escape to exit.");
+                Loop:
+                    ConsoleKeyInfo choice = Console.ReadKey(true);
+                    
+                    switch (choice.Key)
+                    {
+                        case ConsoleKey.D1:
+                            Main();
+                            break;
+                        case ConsoleKey.Escape:
+                            return;
+                            break;
+                        default:
+                            goto Loop; 
+                            break;
+                    }
+                }
             }
 
         }
