@@ -35,7 +35,7 @@ namespace Tank
             DateTime now = new DateTime();
             Stopwatch sw = new Stopwatch();
             TimeSpan timeElapsed = new TimeSpan();
-            int sleepTime = 180;
+            double sleepTime = 180;
             List<Mine> mines = new List<Mine>();
             int x = 0;
             int y = 0;
@@ -187,7 +187,8 @@ namespace Tank
 
                 try
                 {
-                    Thread.Sleep(sleepTime);
+                    Thread.Sleep((int)sleepTime);
+                    sleepTime -= 0.1;
                 }
                 catch (ArgumentOutOfRangeException)
                 {
