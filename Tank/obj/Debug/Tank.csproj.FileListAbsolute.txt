@@ -22,3 +22,12 @@ C:\Users\Boris\Downloads\Team-Work-Advanced-C--master\Team-Work-Advanced-C--mast
 C:\Users\Boris\Downloads\Team-Work-Advanced-C--master\Team-Work-Advanced-C--master\Tank\bin\Debug\Tank.exe
 C:\Users\Boris\Downloads\Team-Work-Advanced-C--master\Team-Work-Advanced-C--master\Tank\bin\Debug\Tank.pdb
 C:\Users\Boris\Downloads\Team-Work-Advanced-C--master\Team-Work-Advanced-C--master\Tank\obj\Debug\Tank.csprojResolveAssemblyReference.cache
+C:\Users\JORO\Desktop\IGRATAAAAAA\Team-Work-Advanced-CSharp-master\Tank\bin\Debug\Tank.exe.config
+C:\Users\JORO\Desktop\IGRATAAAAAA\Team-Work-Advanced-CSharp-master\Tank\obj\Debug\Tank.exe
+C:\Users\JORO\Desktop\IGRATAAAAAA\Team-Work-Advanced-CSharp-master\Tank\obj\Debug\Tank.pdb
+C:\Users\JORO\Desktop\IGRATAAAAAA\Team-Work-Advanced-CSharp-master\Tank\bin\Debug\Tank.exe
+C:\Users\JORO\Desktop\IGRATAAAAAA\Team-Work-Advanced-CSharp-master\Tank\bin\Debug\Tank.pdb
+C:\Users\JORO\Desktop\IGRATAAAAAA\Team-Work-Advanced-CSharp-master\Tank\obj\Debug\Tank.csprojResolveAssemblyReference.cache
+C:\Users\Milen\Desktop\Tank\bin\Debug\Tank.exe.config
+C:\Users\Milen\Desktop\Tank\obj\Debug\Tank.exe
+C:\Users\Milen\Desktop\Tank\obj\Debug\Tank.pdb

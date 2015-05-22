@@ -33,7 +33,7 @@ namespace Tank
         {
             this.x = x;
             this.y = y;
-            this.body = 'x';
+            this.body = '\u2736';
         }
     }
 }
