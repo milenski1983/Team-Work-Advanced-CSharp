@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.IO;
 
 namespace Tank
 {
@@ -31,7 +32,7 @@ namespace Tank
             Random randomGen = new Random(); //random generator for bugs
             int numberOfBugs = randomGen.Next(15, 25);
             uint score = 0;
-            bool gameOver = false;            
+            bool gameOver = false;
             int sleepTime = 180;
             List<Mine> mines = new List<Mine>();
             string direction = null;
@@ -39,10 +40,10 @@ namespace Tank
             //bugs generator
             for (int i = 0; i < numberOfBugs; i++)
             {
-                direction = directions[randomGen.Next(0, directions.Length)];                
+                direction = directions[randomGen.Next(0, directions.Length)];
                 //random bugs' forms
                 bugs.Add(new Bug(randomGen.Next(0, Console.BufferWidth), randomGen.Next(0, Console.BufferHeight - 10), direction, bugsBodies[5]));
-                                                //x                                        //y                          //direction   //bugs' forms
+                //x                                        //y                          //direction   //bugs' forms
             }
             if (score % 2 == 0)
             {
@@ -174,10 +175,26 @@ namespace Tank
                 {
                     Thread.Sleep(1);
                 }
-                
-                
+
+
                 if (gameOver)
                 {
+                    Console.Write("Your score is: {0} ,", score);
+                    int bestScore;
+                    using (StreamReader reader = new StreamReader("bestscore.txt"))
+                    {
+                        bestScore = int.Parse(reader.ReadLine());
+                    }
+                    Console.Write("the best score is: {0}. ", bestScore);
+                    Console.WriteLine(score >= bestScore ? "Super!!!" : "Try harder to beat the record!");
+                    if (score > bestScore)
+                    {
+                        using (StreamWriter writer = new StreamWriter("bestscore.txt"))
+                        {
+                            writer.Write(score);
+                        }
+                    }
+
                     Console.Write("Game over! Press 1) to try again or Escape to exit.");
                 Loop:
                     ConsoleKeyInfo choice = Console.ReadKey(true);
