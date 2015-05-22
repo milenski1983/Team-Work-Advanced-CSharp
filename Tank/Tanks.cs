@@ -35,7 +35,7 @@ namespace Tank
             DateTime now = new DateTime();
             Stopwatch sw = new Stopwatch();
             TimeSpan timeElapsed = new TimeSpan();
-            double sleepTime = 180;
+            int sleepTime = 180;
             List<Mine> mines = new List<Mine>();
             int x = 0;
             int y = 0;
@@ -140,6 +140,7 @@ namespace Tank
                             bugs.RemoveAt(i);
                             Console.Beep();
                             score++;
+                            sleepTime -= 5;
                         }
                     }
                 }
@@ -176,19 +177,10 @@ namespace Tank
 
                 //sw.Stop();
              //   timeElapsed.Add(DateTime.Now - now);
-                if (score>7)
-                {
-                    sleepTime = 140;
-                }
-                if (score>13)
-                {
-                    sleepTime = 100;
-                }
-
+                
                 try
                 {
-                    Thread.Sleep((int)sleepTime);
-                    sleepTime -= 0.1;
+                    Thread.Sleep(sleepTime);
                 }
                 catch (ArgumentOutOfRangeException)
                 {
