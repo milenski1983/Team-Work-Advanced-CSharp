@@ -26,7 +26,7 @@ namespace Tank
 
             string[] directions = { "up", "down", "left", "right" };
             List<Bug> bugs = new List<Bug>();
-            char[] bugsBodies = { '#', '$', '%', '^', '&', '\u263B', '!', '?', '.', ',' };
+            char[] bugsBodies = { '\u263B', '\u263A' };
             List<Bullet> bullets = new List<Bullet>();
             Tank tank = new Tank();
             Random randomGen = new Random(); //random generator for bugs
@@ -42,12 +42,12 @@ namespace Tank
             {
                 direction = directions[randomGen.Next(0, directions.Length)];
                 //random bugs' forms
-                bugs.Add(new Bug(randomGen.Next(0, Console.BufferWidth), randomGen.Next(0, Console.BufferHeight - 10), direction, bugsBodies[5]));
+                bugs.Add(new Bug(randomGen.Next(0, Console.BufferWidth), randomGen.Next(0, Console.BufferHeight - 10), direction, bugsBodies[randomGen.Next(0, bugsBodies.Length)]));
                 //x                                        //y                          //direction   //bugs' forms
             }
             if (score % 2 == 0)
             {
-                bugs.Add(new Bug(randomGen.Next(0, Console.BufferWidth), randomGen.Next(0, Console.BufferHeight - 10), direction, bugsBodies[5]));
+                bugs.Add(new Bug(randomGen.Next(0, Console.BufferWidth), randomGen.Next(0, Console.BufferHeight - 10), direction, bugsBodies[randomGen.Next(0, bugsBodies.Length)]));
             }
             //Mines generator
             for (int i = 0; i < 10; i++)
