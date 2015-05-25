@@ -196,9 +196,13 @@ namespace Tank
                     }
 
                     Console.Write("Game over! Press 1) to try again or Escape to exit.");
-                Loop:
-                    ConsoleKeyInfo choice = Console.ReadKey(true);
+                    ConsoleKeyInfo choice;
 
+                    do
+	                {
+	                    choice = Console.ReadKey();
+	                } while (choice.Key != ConsoleKey.D1 && choice.Key != ConsoleKey.Escape);
+                    
                     switch (choice.Key)
                     {
                         case ConsoleKey.D1:
@@ -208,7 +212,6 @@ namespace Tank
                             return;
                             break;
                         default:
-                            goto Loop;
                             break;
                     }
                 }
