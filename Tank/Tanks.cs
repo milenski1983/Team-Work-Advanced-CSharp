@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
-
+using System.Diagnostics;
 namespace Tank
 {
     class Tanks
@@ -33,10 +33,14 @@ namespace Tank
             int numberOfBugs = randomGen.Next(15, 25);
             uint score = 0;
             bool gameOver = false;
+            bool Invisible = true;
             int sleepTime = 180;
             List<Mine> mines = new List<Mine>();
             string direction = null;
 
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            
             //bugs generator
             for (int i = 0; i < numberOfBugs; i++)
             {
@@ -142,31 +146,38 @@ namespace Tank
                 DrawBullets(bullets);
                 DrawScore(score);
 
+                // Invisible
+                if (sw.ElapsedMilliseconds > 10000)
+                {
+                    Invisible = false;
+                } 
                 //collisions
-                foreach (Bug bug in bugs)
+                if (!Invisible)
                 {
-                    if ((bug.X - 1) <= tank.X && tank.X <= (bug.X + 1) && (bug.Y - 1 <= tank.Y && tank.Y <= bug.Y + 1))
+                    foreach (Bug bug in bugs)
                     {
-                        Console.Beep(1250, 500);
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write("  Collision detected!    ");
-                        gameOver = true;
-                        break;
+                        if ((bug.X - 1) <= tank.X && tank.X <= (bug.X + 1) && (bug.Y - 1 <= tank.Y && tank.Y <= bug.Y + 1))
+                        {
+                            Console.Beep(1250, 500);
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("  Collision detected!    ");
+                            gameOver = true;
+                            break;
+                        }
+                    }
+
+                    foreach (Mine mine in mines)
+                    {
+                        if ((mine.X - 1) <= tank.X && tank.X <= (mine.X + 1) && (mine.Y - 1 <= tank.Y && tank.Y <= mine.Y + 1))
+                        {
+                            Console.Beep(1250, 500);
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("  Collision detected!    ");
+                            gameOver = true;
+                            break;
+                        }
                     }
                 }
-
-                foreach (Mine mine in mines)
-                {
-                    if ((mine.X - 1) <= tank.X && tank.X <= (mine.X + 1) && (mine.Y - 1 <= tank.Y && tank.Y <= mine.Y + 1))
-                    {
-                        Console.Beep(1250, 500);
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write("  Collision detected!    ");
-                        gameOver = true;
-                        break;
-                    }
-                }
-
                 try
                 {
                     Thread.Sleep(sleepTime);
@@ -175,8 +186,7 @@ namespace Tank
                 {
                     Thread.Sleep(1);
                 }
-
-
+                
                 if (gameOver)
                 {
                     Console.Write("Your score is: {0} ,", score);
