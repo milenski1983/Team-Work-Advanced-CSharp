@@ -26,7 +26,7 @@ namespace Tank
 
             string[] directions = { "up", "down", "left", "right" };
             List<Bug> bugs = new List<Bug>();
-            char[] bugsBodies = { '\u263B', '\u263A', '\u00A9', '\u2117', '\u00AE' };
+            char[] bugsBodies = { '\u00F6', '\u022D', '\u0298', '\u0398', '\u047E', '\u058E', '\u06DD', '\u070F', '\u06E9', '\u07F7', '\u080E', '\u0994', '\u263B', '\u263A', '\u00A9', '\u2117', '\u00AE' };
             List<Bullet> bullets = new List<Bullet>();
             Tank tank = new Tank();
             Random randomGen = new Random(); //random generator for bugs
