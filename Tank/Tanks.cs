@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
 using System.Diagnostics;
+
 namespace Tank
 {
     class Tanks
@@ -33,8 +34,8 @@ namespace Tank
             int numberOfBugs = randomGen.Next(15, 25);
             uint score = 0;
             bool gameOver = false;
-            bool Invisible = true;
-            int sleepTime = 180;
+            bool invisible = true;
+            int sleepTime = 150;
             List<Mine> mines = new List<Mine>();
             string direction = null;
 
@@ -149,10 +150,10 @@ namespace Tank
                 // Invisible
                 if (sw.ElapsedMilliseconds > 10000)
                 {
-                    Invisible = false;
+                    invisible = false;
                 } 
                 //collisions
-                if (!Invisible)
+                if (!invisible)
                 {
                     foreach (Bug bug in bugs)
                     {
@@ -178,6 +179,7 @@ namespace Tank
                         }
                     }
                 }
+
                 try
                 {
                     Thread.Sleep(sleepTime);
