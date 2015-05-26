@@ -31,13 +31,12 @@ namespace Tank
             List<Bullet> bullets = new List<Bullet>();
             Tank tank = new Tank();
             Random randomGen = new Random(); //random generator for bugs
-            int numberOfBugs = randomGen.Next(15, 25);
+            int numberOfBugs = randomGen.Next(15, 20);
             uint score = 0;
             bool gameOver = false;
             bool invisible = true;
             int sleepTime = 150;
             List<Mine> mines = new List<Mine>();
-            string direction = null;
 
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -45,15 +44,9 @@ namespace Tank
             //bugs generator
             for (int i = 0; i < numberOfBugs; i++)
             {
-                direction = directions[randomGen.Next(0, directions.Length)];
-                //random bugs' forms
-                bugs.Add(new Bug(randomGen.Next(0, Console.BufferWidth), randomGen.Next(0, Console.BufferHeight - 10), direction, bugsBodies[randomGen.Next(0, bugsBodies.Length)]));
-                //x                                        //y                          //direction   //bugs' forms
+                bugs.Add(new Bug(randomGen.Next(0, Console.BufferWidth), randomGen.Next(0, Console.BufferHeight - 10), directions[randomGen.Next(0, directions.Length)], bugsBodies[randomGen.Next(0, bugsBodies.Length)]));
             }
-            if (score % 2 == 0)
-            {
-                bugs.Add(new Bug(randomGen.Next(0, Console.BufferWidth), randomGen.Next(0, Console.BufferHeight - 10), direction, bugsBodies[randomGen.Next(0, bugsBodies.Length)]));
-            }
+            
             //Mines generator
             for (int i = 0; i < 10; i++)
             {
@@ -134,11 +127,16 @@ namespace Tank
                         if (bullet.X == bugs[i].X && bullet.Y == bugs[i].Y)
                         {
                             bugs.RemoveAt(i);
-                            Console.Beep();
                             score++;
                             sleepTime -= 5;
                         }
                     }
+                }
+
+                //add new bug for every 5 points
+                if ((score % 5 == 0) && (score != 0))
+                {
+                    bugs.Add(new Bug(randomGen.Next(0, Console.BufferWidth), randomGen.Next(0, Console.BufferHeight - 10), directions[randomGen.Next(0, directions.Length)], bugsBodies[randomGen.Next(0, bugsBodies.Length)]));
                 }
 
                 DrawMines(mines);
@@ -152,6 +150,7 @@ namespace Tank
                 {
                     invisible = false;
                 } 
+
                 //collisions
                 if (!invisible)
                 {
@@ -159,7 +158,6 @@ namespace Tank
                     {
                         if ((bug.X - 1) <= tank.X && tank.X <= (bug.X + 1) && (bug.Y - 1 <= tank.Y && tank.Y <= bug.Y + 1))
                         {
-                            Console.Beep(1250, 500);
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.Write("  Collision detected!    ");
                             gameOver = true;
@@ -171,7 +169,6 @@ namespace Tank
                     {
                         if ((mine.X - 1) <= tank.X && tank.X <= (mine.X + 1) && (mine.Y - 1 <= tank.Y && tank.Y <= mine.Y + 1))
                         {
-                            Console.Beep(1250, 500);
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.Write("  Collision detected!    ");
                             gameOver = true;
