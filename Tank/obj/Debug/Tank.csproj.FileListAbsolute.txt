@@ -37,3 +37,9 @@ C:\Users\Boris\Desktop\tankoov\trunk\Tank\obj\Debug\Tank.pdb
 C:\Users\Boris\Desktop\tankoov\trunk\Tank\bin\Debug\Tank.exe
 C:\Users\Boris\Desktop\tankoov\trunk\Tank\bin\Debug\Tank.pdb
 C:\Users\Boris\Desktop\tankoov\trunk\Tank\obj\Debug\Tank.csprojResolveAssemblyReference.cache
+C:\Users\Milen\Desktop\Tank - last version\trunk\Tank\bin\Debug\Tank.exe.config
+C:\Users\Milen\Desktop\Tank - last version\trunk\Tank\obj\Debug\Tank.exe
+C:\Users\Milen\Desktop\Tank - last version\trunk\Tank\obj\Debug\Tank.pdb
+C:\Users\Milen\Desktop\Tank - last version\trunk\Tank\bin\Debug\Tank.exe
+C:\Users\Milen\Desktop\Tank - last version\trunk\Tank\bin\Debug\Tank.pdb
+C:\Users\Milen\Desktop\Tank - last version\trunk\Tank\obj\Debug\Tank.csprojResolveAssemblyReference.cache

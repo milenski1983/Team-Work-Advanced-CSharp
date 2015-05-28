@@ -44,7 +44,7 @@ namespace Tank
             //bugs generator
             for (int i = 0; i < numberOfBugs; i++)
             {
-                bugs.Add(new Bug(randomGen.Next(0, Console.BufferWidth), randomGen.Next(0, Console.BufferHeight - 10), directions[randomGen.Next(0, directions.Length)], bugsBodies[randomGen.Next(0, bugsBodies.Length)]));
+                bugs.Add(new Bug(randomGen.Next(2, Console.BufferWidth), randomGen.Next(2, Console.BufferHeight - 10), directions[randomGen.Next(0, directions.Length)], bugsBodies[randomGen.Next(0, bugsBodies.Length)]));
             }
             
             //Mines generator

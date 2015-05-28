@@ -61,7 +61,7 @@ namespace Tank
                     }
                     break;
                 case "up":
-                    if (this.y >= 1)
+                    if (this.y >= 2)
                     {
                         return this.y--;
                     }
